@@ -6,13 +6,13 @@
 
 **The High-Voltage Liquidity Protocol on Stellar.**
 
-[![CI/CD](https://github.com/modiv2/volt_pay/actions/workflows/ci.yml/badge.svg)](https://github.com/modiv2/volt_pay/actions)
+[![CI/CD](https://github.com/peachyv1/voltpay/actions/workflows/ci.yml/badge.svg)](https://github.com/peachyv1/voltpay/actions)
 [![Stellar](https://img.shields.io/badge/Network-Stellar_Testnet-blue?logo=stellar)](https://stellar.org)
 [![Soroban](https://img.shields.io/badge/Smart_Contracts-Soroban-purple?logo=rust)](https://soroban.stellar.org)
 [![Next.js](https://img.shields.io/badge/Frontend-Next.js_14-black?logo=next.js)](https://nextjs.org)
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
-[Live Demo](https://volt-pay.vercel.app) · [Report Bug](https://github.com/modiv2/volt_pay/issues) · [Request Feature](https://github.com/modiv2/volt_pay/issues)
+[Live Demo](https://volt-pay.vercel.app) · [Report Bug](https://github.com/peachyv1/voltpay/issues) · [Request Feature](https://github.com/peachyv1/voltpay/issues)
 
 </div>
 
@@ -111,7 +111,7 @@ graph TD
 
 1.  **Clone the repo:**
     ```bash
-    git clone https://github.com/modiv2/volt_pay.git
+    git clone https://github.com/peachyv1/voltpay.git
     cd volt_pay
     ```
 
