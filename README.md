@@ -86,6 +86,23 @@ graph TD
 
 ---
 
+## 📂 Project Structure
+
+```text
+.
+├── contracts/               # Soroban Smart Contracts (Rust)
+│   ├── volt-token/          # Custom SAC Token Implementation
+│   └── liquidity-pool/      # AMM & Liquidity Logic
+├── frontend/                # Next.js 14 Application
+│   ├── app/                 # App Router Pages & API Routes
+│   ├── components/          # Reusable UI Components
+│   └── hooks/               # Custom React Hooks for Stellar/SWR
+├── scripts/                 # Deployment & Management Scripts
+└── Makefile                 # Build & Test Orchestration
+```
+
+---
+
 ## 🏗️ Technical Stack
 
 -   **Contracts:** Rust, Soroban SDK v21
