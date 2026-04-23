@@ -23,6 +23,7 @@ pub struct LiquidityPool;
 
 #[contractimpl]
 impl LiquidityPool {
+    /// Initializes the pool with the token pair and admin.
     pub fn initialize(env: Env, token_contract: Address, xlm_contract: Address, admin: Address) {
         if env.storage().instance().has(&DataKey::Admin) {
             panic!("already initialized");
@@ -39,6 +40,7 @@ impl LiquidityPool {
         env.storage().instance().set(&DataKey::TotalLP, &0i128);
     }
 
+    /// Adds liquidity to the pool.
     pub fn add_liquidity(env: Env, provider: Address, token_amount: i128, xlm_amount: i128) {
         provider.require_auth();
 
@@ -101,6 +103,7 @@ impl LiquidityPool {
         );
     }
 
+    /// Removes liquidity from the pool based on LP tokens.
     pub fn remove_liquidity(env: Env, provider: Address, lp_amount: i128) {
         provider.require_auth();
 
@@ -157,6 +160,7 @@ impl LiquidityPool {
         );
     }
 
+    /// Performs an automated market maker swap.
     pub fn swap(env: Env, user: Address, token_in: Address, amount_in: i128) -> i128 {
         user.require_auth();
 
@@ -220,6 +224,7 @@ impl LiquidityPool {
         amount_out
     }
 
+    /// Returns the current exchange rate (multiplied by 1000).
     pub fn get_price(env: Env) -> i128 {
         let reserve_a: i128 = env.storage().instance().get(&DataKey::ReserveA).unwrap();
         let reserve_b: i128 = env.storage().instance().get(&DataKey::ReserveB).unwrap();
