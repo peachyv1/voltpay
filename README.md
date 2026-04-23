@@ -29,6 +29,15 @@ Provide liquidity to the protocol and earn a share of every swap fee. Our dynami
 
 ![Pool Preview](public/assets/pool.png)
 
+## 📜 Smart Contracts (Testnet)
+
+| Contract | Address |
+| :--- | :--- |
+| **Liquidity Pool** | `CCQZXG3QGFPLRS6LJJ4XALJGUGVNLISYN6BJSVOH57ED6FYJH7KGKXAR` |
+| **VOLT Token** | `CCHLK4RHSS27U4K6VRIP6QW2N5IGBJJES4GA4CI3RRUGP54G4FH5HL7P` |
+| **Asset Wrapper** | `CBMGE6BSHIGBXAUMW32D542POCBMI3DHP7ZZGI6RTGPRECJQA3S5ZFDI` |
+| **VOLT Issuer** | `GBALPCSLWTTOVYUJ35KSDBOQETFDFAGKMQOYN76OWLY7QCIHLQUHINBS` |
+
 ## 🛠 Tech Stack
 
 - **Framework**: Next.js 14 (App Router)
