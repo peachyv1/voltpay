@@ -20,11 +20,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'
   ),
-  title: "Volt Pay | Lightning Fast Stellar DeFi",
-  description: "High-voltage DeFi on Stellar. Swap VOLT, provide liquidity, and earn yield — fully on-chain via Soroban.",
+  title: "Volt Pay | High-Voltage Automated Market Maker on Stellar",
+  description: "Experience the fastest AMM on Stellar. Swap VOLT, provide liquidity, and earn protocol fees with advanced Soroban smart contracts.",
   openGraph: {
-    title: "Volt Pay",
-    description: "High-voltage DeFi on Stellar Testnet",
+    title: "Volt Pay Finance",
+    description: "The premier AMM and Liquidity Protocol on Stellar Soroban.",
     url: "https://volt-pay.vercel.app",
     siteName: "Volt Pay",
     locale: "en_US",
