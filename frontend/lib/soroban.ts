@@ -99,8 +99,9 @@ export async function signAndSubmit(publicKey: string, operation: any) {
   return response.hash;
 }
 
-export const poolContract = new Contract(process.env.NEXT_PUBLIC_POOL_CONTRACT_ADDRESS || '');
-export const voltContract = new Contract(process.env.NEXT_PUBLIC_TOKEN_CONTRACT_ADDRESS || '');
+const DUMMY_ID = 'CCQZXG3QGFPLRS6LJJ4XALJGUGVNLISYN6BJSVOH57ED6FYJH7KGKXAR';
+export const poolContract = new Contract(process.env.NEXT_PUBLIC_POOL_CONTRACT_ADDRESS || DUMMY_ID);
+export const voltContract = new Contract(process.env.NEXT_PUBLIC_TOKEN_CONTRACT_ADDRESS || DUMMY_ID);
 export const XLM_CONTRACT = 'CDLZFC3SYJYDZT7K67VZ75HPJVIEUVNIXF47ZG2FB2RMQQVU2HHGCYSC';
 
 export { nativeToScVal, Address, xdr, TransactionBuilder, Networks, rpc, Horizon, BASE_FEE, Operation, StrKey };
