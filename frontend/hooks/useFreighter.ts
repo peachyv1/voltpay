@@ -1,7 +1,14 @@
 'use client';
 import { useState, useEffect, useCallback } from 'react';
 import useSWR from 'swr';
-import * as freighter from '@stellar/freighter-api';
+import {
+  isConnected,
+  isAllowed,
+  requestAccess,
+  getAddress,
+  getNetworkDetails,
+  signTransaction,
+} from '@stellar/freighter-api';
 
 let sessionCheckInitiated = false;
 
@@ -25,16 +32,16 @@ export const useFreighter = () => {
     }
 
     try {
-      const connResult: any = await freighter.isConnected();
+      const connResult: any = await isConnected();
       const installed = connResult?.isConnected ?? !!connResult;
       if (!installed) return;
 
-      const allowResult: any = await freighter.isAllowed();
+      const allowResult: any = await isAllowed();
       const allowed = allowResult?.isAllowed ?? !!allowResult;
       if (!allowed) return;
 
       // Site is already trusted — silently fetch the key
-      const pkResponse: any = await freighter.getPublicKey();
+      const pkResponse: any = await getAddress();
       let pk = '';
       if (typeof pkResponse === 'string') pk = pkResponse;
       else if (pkResponse?.publicKey) pk = pkResponse.publicKey;
@@ -46,7 +53,7 @@ export const useFreighter = () => {
         setConnected(true);
         // Fetch the actual network
         try {
-          const details = await freighter.getNetworkDetails();
+          const details = await getNetworkDetails();
           if (details?.networkPassphrase?.includes('Test SDF')) {
             setNetwork('TESTNET');
           } else {
@@ -73,7 +80,7 @@ export const useFreighter = () => {
     
     try {
       // 1. Check extension is installed
-      const connResult: any = await freighter.isConnected();
+      const connResult: any = await isConnected();
       const installed = connResult?.isConnected ?? !!connResult;
       if (!installed) {
         setError('Freighter extension is not installed. Get it at freighter.app');
@@ -81,7 +88,7 @@ export const useFreighter = () => {
       }
 
       // 2. requestAccess() opens the Freighter popup
-      const accessResult: any = await freighter.requestAccess();
+      const accessResult: any = await requestAccess();
       let pk = '';
       if (typeof accessResult === 'string') pk = accessResult;
       else if (accessResult?.publicKey) pk = accessResult.publicKey;
@@ -98,7 +105,7 @@ export const useFreighter = () => {
 
       // 3. Detect network
       try {
-        const details = await freighter.getNetworkDetails();
+        const details = await getNetworkDetails();
         setNetwork(
           details?.networkPassphrase?.includes('Test SDF') ? 'TESTNET' : 'PUBLIC'
         );
