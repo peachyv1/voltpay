@@ -38,11 +38,11 @@ export async function GET() {
       if (topicName === 'LiquidityAdded' || topicName === 'LiquidityRemoved') {
         type = 'liquidity';
         // (token_amount, xlm_amount)
-        amount = Array.isArray(native) ? (native[0] / 1e7).toString() : '0';
+        amount = Array.isArray(native) ? (Number(native[0]) / 1e7).toString() : '0';
       } else if (topicName === 'swap') {
         type = 'swap';
         // (amount_in, amount_out)
-        amount = Array.isArray(native) ? (native[0] / 1e7).toString() : '0';
+        amount = Array.isArray(native) ? (Number(native[0]) / 1e7).toString() : '0';
       }
 
       return {
