@@ -24,10 +24,18 @@ export async function GET(
     const xlmEntry = balances.find((b) => b.asset_type === 'native');
     const xlmBalance = xlmEntry?.balance ?? '0';
 
-    // VOLT (classic asset issued by ISSUER)
-    const voltEntry = balances.find(
-      (b) => b.asset_code === 'VOLT' && b.asset_issuer === ISSUER
+    // VOLT (classic asset)
+    let voltEntry = balances.find(
+      (b) => b.asset_code === 'VOLT' && (ISSUER ? b.asset_issuer === ISSUER : true)
     );
+    
+    // Final fallback: if we have an ISSUER but didn't find a match, 
+    // check if ANY 'VOLT' exists to avoid showing "Trustline required" 
+    // when the user clearly has some version of VOLT.
+    if (!voltEntry && ISSUER) {
+      voltEntry = balances.find((b) => b.asset_code === 'VOLT');
+    }
+
     const hasTrustline = !!voltEntry;
     const voltBalance   = voltEntry?.balance ?? '0';
     const voltLimit     = voltEntry?.limit   ?? '0';
