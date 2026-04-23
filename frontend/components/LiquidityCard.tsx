@@ -5,6 +5,7 @@ import { PlusCircle, MinusCircle, Loader2, Droplets, RefreshCw, Wallet, CheckCir
 import { useFreighter } from '@/hooks/useFreighter';
 import { useVoltBalance } from '@/hooks/useVoltBalance';
 import { usePoolStats } from '@/hooks/usePoolStats';
+import { useVoltPrice } from '@/hooks/useVoltPrice';
 import { floatUp, successBurst, tabIndicator, stagger } from '@/lib/animations';
 import { useTilt } from '@/hooks/useTilt';
 import { AnimatedNumber } from '@/components/AnimatedNumber';
@@ -14,6 +15,7 @@ export function LiquidityCard() {
   const { isConnected, connect, publicKey } = useFreighter();
   const { voltBalance, xlmBalance, mutate: mutateAGT } = useVoltBalance(publicKey);
   const { tvl, xlmReserve, voltReserve, apy, isLoading, mutate: mutatePool } = usePoolStats();
+  const { price } = useVoltPrice();
   
   const [tab, setTab] = useState<'add' | 'remove'>('add');
   const [voltAmt, setVoltAmt] = useState('');
