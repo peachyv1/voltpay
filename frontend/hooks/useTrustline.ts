@@ -1,7 +1,7 @@
 'use client';
 import useSWR from 'swr';
 import { useState } from 'react';
-import { signTransaction } from '@stellar/freighter-api';
+import * as freighter from '@stellar/freighter-api';
 import { Horizon, TransactionBuilder, Operation, Asset, BASE_FEE } from '@stellar/stellar-sdk';
 
 const HORIZON_URL = process.env.NEXT_PUBLIC_HORIZON_URL || 'https://horizon-testnet.stellar.org';
@@ -47,7 +47,7 @@ export const useTrustline = (publicKey: string) => {
         .build();
 
       // 4. Sign with Freighter
-      const signedResult = await signTransaction(tx.toXDR(), {
+      const signedResult = await freighter.signTransaction(tx.toXDR(), {
         networkPassphrase: NETWORK_PASSPHRASE,
       });
 

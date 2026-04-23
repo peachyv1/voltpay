@@ -11,7 +11,7 @@ import {
   Operation,
   StrKey
 } from '@stellar/stellar-sdk';
-import { signTransaction } from '@stellar/freighter-api';
+import * as freighter from '@stellar/freighter-api';
 
 const RPC_URL = process.env.SOROBAN_RPC_URL || 'https://soroban-testnet.stellar.org';
 const HORIZON_URL = process.env.NEXT_PUBLIC_HORIZON_URL || 'https://horizon-testnet.stellar.org';
@@ -37,7 +37,7 @@ export async function signAndSubmit(publicKey: string, operation: any) {
   tx = await server.prepareTransaction(tx);
 
   // 4. Sign with Freighter
-  const signedResult = await signTransaction(tx.toXDR(), {
+  const signedResult = await freighter.signTransaction(tx.toXDR(), {
     networkPassphrase: NETWORK_PASSPHRASE,
   });
 
