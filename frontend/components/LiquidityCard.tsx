@@ -26,10 +26,12 @@ export function LiquidityCard() {
 
   const voltReserveNum = parseFloat(voltReserve) || 0;
   const xlmReserveNum = parseFloat(xlmReserve) || 0;
-  // If pool is empty, use 1:1 ratio for the first depositor
+  
+  // Use pool ratio if liquidity exists, otherwise fallback to market price from API
+  const priceVal = parseFloat(price) || 0.05;
   const ratio = (voltReserveNum > 0 && xlmReserveNum > 0) 
     ? xlmReserveNum / voltReserveNum 
-    : 1;
+    : priceVal;
 
   const handleVoltChange = (v: string) => {
     setVoltAmt(v);
