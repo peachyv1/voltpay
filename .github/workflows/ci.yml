@@ -45,3 +45,9 @@ jobs:
 
       - name: Build Frontend
         run: cd frontend && npm run build
+        env:
+          NEXT_PUBLIC_POOL_CONTRACT_ADDRESS: CCQZXG3QGFPLRS6LJJ4XALJGUGVNLISYN6BJSVOH57ED6FYJH7KGKXAR
+          NEXT_PUBLIC_TOKEN_CONTRACT_ADDRESS: CCHLK4RHSS27U4K6VRIP6QW2N5IGBJJES4GA4CI3RRUGP54G4FH5HL7P
+          NEXT_PUBLIC_VOLT_ISSUER: GAUTO5A... # Dummy
+          NEXT_PUBLIC_HORIZON_URL: https://horizon-testnet.stellar.org
+          SOROBAN_RPC_URL: https://soroban-testnet.stellar.org
